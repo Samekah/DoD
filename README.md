@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------				
-# <div style="text-align: right"> DUNGEONS OF DOOM V1.0 </div>
+# DUNGEONS OF DOOM V1.0 
 ------------------------------------------------------------------------------------------
 
 Dungeons of Doom is a text based adventure game which can be run through command line.
@@ -36,9 +36,21 @@ a fail message will be displayed and the turn will be spent!
 4. **quit** - allows you to exit the game
 
 5. **move** - this command has 4 variations after the word move, these are "n","e","s","w". 
-..* Move n wil move your character north - up the map, 
-..* Move e will move your character east - to the right of the map,
-..* Move s will move your character south - down the map
-..* move w will move your character west - to the left of the map. 
+    * Move n wil move your character north - up the map, 
+    * Move e will move your character east - to the right of the map,
+    * Move s will move your character south - down the map
+    * move w will move your character west - to the left of the map. 
 
 If you run in to a "#" a fail message will be displayed and your turn will be spent!
+
+------------------
+### KNOWN ISSUES:
+------------------
+*
+
+----------------------------
+### FEATURES IN DEVELOPMENT:
+----------------------------
+* Adding a Bot that will look for, follow and attack the player
+* Multiplayer connectivity - allowing more than one player to play together
+* UI interface

@@ -1,6 +1,6 @@
-------------------------------------------------------------------------------------------				
-# DUNGEONS OF DOOM V1.0 
-------------------------------------------------------------------------------------------
+--------------------				
+# DUNGEONS OF DOOM
+--------------------
 
 Dungeons of Doom is a text based adventure game which can be run through command line.
 to proceed with installation please locate where this folder ha been saved and note it down.

@@ -2,13 +2,13 @@
 # DUNGEONS OF DOOM
 --------------------
 
-Dungeons of Doom is a text based adventure game which can be run through command line.
-to proceed with installation please locate where this folder ha been saved and note it down.
+Dungeons of Doom is a text-based adventure game which can be run through the command line.
+to proceed with installation please follow the instructions below.
 
 INSTALLATION INSTRUCTIONS:
 
-to install Dungeon of Doom, first open your command line/ git bash and navigate to the folder that you want to clone 
-Dungeons of DAoom to. After this git clone the repository to the target location and open the subsequent folder in
+to install Dungeon of Doom, first, open your command line/ git bash and navigate to the folder that you want to clone 
+Dungeons of Doom to. After this git clone the repository to the target location and open the subsequent folder in
 vscode. Here, open your git bash terminal and run the command "javac DoD.java", after a little while
 an empty line will appear below that command - here type "java DoD" to run the program.
 
@@ -16,7 +16,7 @@ an empty line will appear below that command - here type "java DoD" to run the p
 ### USER INSTRUCTIONS:
 ------------------
 
-As Dungeons of doom is a text based game there is a key for hat items on the map mean, these are:
+As Dungeons of Doom is a text-based game there is a key for the items on the map, these are:
 
 - **P** - this represents the player
 - **E** - this represents the exit
@@ -36,13 +36,23 @@ a fail message will be displayed and the turn will be spent!
 4. **quit** - allows you to exit the game
 
 5. **move** - this command has 4 variations after the word move, these are "n","e","s","w". 
-    * Move n wil move your character north - up the map, 
+    * Move n will move your character north - up the map, 
     * Move e will move your character east - to the right of the map,
     * Move s will move your character south - down the map
     * move w will move your character west - to the left of the map. 
 
-If you run in to a "#" a fail message will be displayed and your turn will be spent!
+If you run into a "#" a fail message will be displayed and your turn will be spent!
 
+------------------
+### HOW TO PLAY:
+------------------
+The main focus of the game is to collect the required gold and exit the dungeon before the other players. Leaving you to be the last one standing!
+**Key details:**
+
+1. each player must take turns performing an action (look, hello, pickup, and move). Whether the move is successful or not, an action point will be used up.
+2. Avoid your robotic counterparts, they may not be living but they still pack a punch
+3. Collect the required Gold to be able to exit the dungeon! (easy enough)
+4. And most importantly, have fun and good luck!
 ------------------
 ### KNOWN ISSUES:
 ------------------
@@ -51,6 +61,8 @@ If you run in to a "#" a fail message will be displayed and your turn will be sp
 ----------------------------
 ### FEATURES IN DEVELOPMENT:
 ----------------------------
+* The ability to load on maps
 * Adding a Bot that will look for, follow and attack the player
 * Multiplayer connectivity - allowing more than one player to play together
 * UI interface
+* Ability to create maps using UI

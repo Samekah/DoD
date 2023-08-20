@@ -22,7 +22,7 @@ public class GameLogic {
 	public GameLogic() {
         map = new Map();
         hp = new HumanPlayer(this);
-        hp.playerPosition();
+        hp.randomPlayerPosition();
 	}
 
     /**
@@ -47,8 +47,8 @@ public class GameLogic {
      */
     protected String move(char direction) {
         int playerPos = 0;
-        playerX = hp.getPlayerPosition()[0];
-        playerY = hp.getPlayerPosition()[1];
+        playerX = hp.getPlayerCoord()[0];
+        playerY = hp.getPlayerCoord()[1];
         
         /*This section of code sets the variable player position to be the x or y co-ordinate 
     	 * that the player wants to move to
@@ -109,7 +109,7 @@ public class GameLogic {
 		
 			//move player to new position
             map.getMap()[playerPos][playerX] = 'P';
-            hp.setPlayerPosition(playerX, playerPos); 
+            hp.setPlayerCoord(playerX, playerPos); 
 		}
         else if(direction == 'E' || direction == 'W') {	
 			//if the position you want to move to is # (a wall, dont allow it)
@@ -150,7 +150,7 @@ public class GameLogic {
 		
 			//move player to new position
             map.getMap()[playerY][playerPos] = 'P';
-            hp.setPlayerPosition(playerPos, playerY); 
+            hp.setPlayerCoord(playerPos, playerY); 
 		}
         return "SUCCESS";
     }
@@ -164,8 +164,8 @@ public class GameLogic {
         int mapWidth = map.getMapWidth();
     	int mapLength = map.getMapLength();
     	
-        playerX = hp.getPlayerPosition()[0];
-        playerY = hp.getPlayerPosition()[1];
+        playerX = hp.getPlayerCoord()[0];
+        playerY = hp.getPlayerCoord()[1];
 
         /**
          * This section of code uses the players x and y co-ordinates, takes awy 2 from the x and y aswell

@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Runs the game with a human player and contains code needed to read inputs.
@@ -35,39 +37,44 @@ public class HumanPlayer {
      * get the players position
      * @return
      */
-    public int[] getPlayerPosition(){
+    public int[] getPlayerCoord(){
         return playerPosition;
     }
 
     /**
-     * Sets the players position
-     * @return
-     */
-    public void setPlayerPosition(int x, int y){
+    * Sets the players position
+    * @return
+    */
+    public void setPlayerCoord(int x, int y){
         playerPosition[0] = x;      //x co-ordinate
         playerPosition[1] = y;      //y co-ordinate	
     }
 
-    /*This section of code searches the map array for the player icon (P) and stores the X and Y values
-    * of its position
-    */
-    protected void playerPosition() {
-        int mapWidth = gameLogic.map.getMapWidth();
-    	int mapLength = gameLogic.map.getMapLength();
-    	
-    	for(int counter1= 0; counter1 < mapLength; counter1++) { 
-    		for(int counter2 = 0; counter2 < mapWidth; counter2++) {
-    			
-    			if(gameLogic.map.getMap()[counter2][counter1] == 'P') {
-    				
-                    setPlayerPosition(counter1, counter2);
+    /**
+    * Adds Player icon to a random position on the map
+	* 
+	*/
+    protected void randomPlayerPosition(){
+        Random r = new Random();
+        int randomY = r.nextInt(gameLogic.map.getMapWidth()-2) + 1;
+        int randomX = r.nextInt(gameLogic.map.getMapLength()-2) + 1;
 
-    			}
-    		}
-    	}
-		
+        switch(gameLogic.map.getMap()[randomY][randomX]){
+            case '#':
+                randomPlayerPosition();
+                break;
+            case 'G':
+                randomPlayerPosition();
+                break;
+            case 'E':
+                randomPlayerPosition();
+                break;
+            default:
+                gameLogic.map.getMap()[randomY][randomX] = 'P';
+                setPlayerCoord(randomX, randomY);
+                break;
+        }
     }
-
 
     /**
      * Reads player's input from the console.
@@ -92,12 +99,12 @@ public class HumanPlayer {
     }
 
     /**
-     * Processes the command. It should return a reply in form of a String, as the protocol dictates.
-     * Otherwise it should return the string "Invalid".
-     *
-     * @param command : Input entered by the user.
-     * @return : Processed output or Invalid if the @param command is wrong.
-     */
+    * Processes the command. It should return a reply in form of a String, as the protocol dictates.
+    * Otherwise it should return the string "Invalid".
+    *
+    * @param command : Input entered by the user.
+    * @return : Processed output or Invalid if the @param command is wrong.
+    */
     protected String getNextAction(String command) {
         String output = "";
 

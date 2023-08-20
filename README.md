@@ -61,8 +61,13 @@ The main focus of the game is to collect the required gold and exit the dungeon 
 ----------------------------
 ### FEATURES IN DEVELOPMENT:
 ----------------------------
-* The ability to load on maps
-* Adding a Bot that will look for, follow and attack the player
-* Multiplayer connectivity - allowing more than one player to play together
-* UI interface
-* Ability to create maps using UI
+
+| Task # | Task                                                                     | progress| Done?|
+| :----- |:-------------------------------------------------------------------------| :------:|:----:|
+| 1      | The ability randomly place player on map                                 | 0/ 2    | [-]  |
+| 2      | The ability to load on maps                                              | 0/ 4    | [-]  |
+| 3      | Adding a Bot that will look for, follow and attack the player            | / ?     | [-]  |
+| 4      | Multiplayer connectivity - allowing more than one player to play together| / ?     | [-]  |
+| 5      | UI interface                                                             | / ?     | [-]  |
+| 6      | Option to play UI or CLI                                                 | / ?     | [-]  |
+| 7      | Ability to create maps using UI                                          | / ?     | [-]  |

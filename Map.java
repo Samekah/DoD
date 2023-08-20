@@ -87,6 +87,8 @@ public class Map {
 
 	
     /**
-     * TODO: Add random player position
-     */
+     * Adds Player icon Pto a random position on the map
+	 * 
+	 */
+
 }

@@ -64,7 +64,7 @@ The main focus of the game is to collect the required gold and exit the dungeon 
 
 | Task # | Task                                                                     | progress| Done?                  |
 | :----- |:-------------------------------------------------------------------------| :------:|:----------------------:|
-| 1      | <ol><li>- The ability randomly place player on map</li><ul><li>- The ability to check player isn't surronded by walls</li></ul><ol>                                                                             | 2/ 3    |<ul><li>- [ ] </li></ul>|
+| 1      | <ol><li> The ability randomly place player on map:</li><ul><li> The ability to check player isn't surronded by walls</li></ul><ol>                                                                             | 2/ 3    |<ul><li>- [ ] </li></ul>|
 | 2      | The ability to load on maps                                              | 0/ 4    |<ul><li>- [ ] </li></ul>|
 | 3      | Adding a Bot that will look for, follow and attack the player            | / ?     |<ul><li>- [ ] </li></ul>|
 | 4      | Multiplayer connectivity - allowing more than one player to play together| / ?     |<ul><li>- [ ] </li></ul>|

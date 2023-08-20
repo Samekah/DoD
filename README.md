@@ -18,11 +18,11 @@ an empty line will appear below that command - here type "java DoD" to run the p
 
 As Dungeons of doom is a text based game there is a key for hat items on the map mean, these are:
 
-**P** - this represents the player
-**E** - this represents the exit
-**G** - this represents Gold
-**.** - this represents an empty space
-**#** - this represents a wall
+- **P** - this represents the player
+- **E** - this represents the exit
+- **G** - this represents Gold
+- **.** - this represents an empty space
+- **#** - this represents a wall
 
 The Available commands to you are:
 

@@ -27,13 +27,13 @@ public class Map {
 		{'#','.','.','E','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#'},
 		{'#','.','.','.','.','.','.','.','.','.','.','.','G','.','.','.','.','.','.','#'},
 		{'#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#'},
-		{'#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#'},
+		{'#','.','.','.','.','.','.','.','.','P','.','.','.','.','.','.','.','.','.','#'},
 		{'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'}
 		};
 	}
 	
 	/**
-	 * Constructor that accepts a map to read in from.
+	 * TODO: Constructor that accepts a map to read in from.
 	 *
 	 * @param : The filename of the map file.
 	 */
@@ -63,14 +63,30 @@ public class Map {
         return mapName;
     }
 
+	 /**
+     * @return : The length of the current map.
+     */
+	protected int getMapLength() {
+    	return map[0].length;
+    }
+    
+	 /**
+     * @return : The width of the current map.
+     */
+    protected int getMapWidth() { 
+    	return map.length;
+    }
 
     /**
-     * Reads the map from file.
+     * TODO: Reads the map from file.
      *
      * @param : Name of the map's file.
      */
     protected void readMap(String fileName) {
     }
 
-
+	
+    /**
+     * TODO: Add random player position
+     */
 }

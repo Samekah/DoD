@@ -11,6 +11,7 @@ import java.util.Random;
 public class HumanPlayer {
     
     private GameLogic gameLogic;
+    private char[][] loadedMap;
     private int playerGold;
     private int[] playerPosition;
     BufferedReader reader;
@@ -21,6 +22,7 @@ public class HumanPlayer {
      */
     public HumanPlayer(GameLogic gl){
         gameLogic = gl;
+        loadedMap = gl.map.getMap();
         playerGold = 0;
         playerPosition = new int[2];
     }
@@ -51,28 +53,28 @@ public class HumanPlayer {
     }
 
     /**
-    * Adds Player icon to a random position on the map
-	* 
+    * Adds Player icon to a random position on the map and makes sure it is not surrounded by walls
+	* TODO: wall check method to make sure player isn't surrounded by walls
 	*/
     protected void randomPlayerPosition(){
+        
         Random r = new Random();
         int randomY = r.nextInt(gameLogic.map.getMapWidth()-2) + 1;
         int randomX = r.nextInt(gameLogic.map.getMapLength()-2) + 1;
+        char icon = loadedMap[randomY][randomX];
 
-        switch(gameLogic.map.getMap()[randomY][randomX]){
-            case '#':
+        if(icon == '#' || icon == 'G' || icon =='E'){
+            randomPlayerPosition();
+        }
+        else{
+            if(loadedMap[randomY-1][randomX] == '#' && loadedMap[randomY+1][randomX] == '#' 
+            && loadedMap[randomY][randomX-1] == '#' && loadedMap[randomY][randomX+1] == '#'){
                 randomPlayerPosition();
-                break;
-            case 'G':
-                randomPlayerPosition();
-                break;
-            case 'E':
-                randomPlayerPosition();
-                break;
-            default:
-                gameLogic.map.getMap()[randomY][randomX] = 'P';
+            }
+            else{
+                loadedMap[randomY][randomX] = 'P';
                 setPlayerCoord(randomX, randomY);
-                break;
+            }                        
         }
     }
 

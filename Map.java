@@ -79,7 +79,13 @@ public class Map {
 
     /**
      * TODO: Reads the map from file.
-     *
+     * Set the gold required to exit the current map
+	 * Set map name
+	 * Set map
+	 * Check if map is valid - format of file is correct, 
+	 * 						 - an array length of > 3, 
+	 * 						 - has atleast 1 gold and exit, 
+	 * 						 - player can find a way to get all gold needed and exit from minimum 1 path
      * @param : Name of the map's file.
      */
     protected void readMap(String fileName) {

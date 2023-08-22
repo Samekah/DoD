@@ -54,7 +54,6 @@ public class HumanPlayer {
 
     /**
     * Adds Player icon to a random position on the map and makes sure it is not surrounded by walls
-	* TODO: wall check method to make sure player isn't surrounded by walls
 	*/
     protected void randomPlayerPosition(){
         

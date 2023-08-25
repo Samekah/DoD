@@ -208,6 +208,13 @@ public class GameLogic {
 		return String.valueOf(hp.getPlayerGold());
     }
 
+	 /**
+     * Quits the game, shutting down the application by setting the isRunning variable to false.
+     */
+    // protected void loadMap() {
+        
+    // }
+
     /**
      * Quits the game, shutting down the application by setting the isRunning variable to false.
      */

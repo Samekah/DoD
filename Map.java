@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Reads and contains in memory the map of the game.
  *
@@ -33,12 +38,19 @@ public class Map {
 	}
 	
 	/**
-	 * TODO: Constructor that accepts a map to read in from.
+	 * Constructor that accepts a map to read in from a file
+	 * TODO: check actual file type aswell as name.
 	 *
 	 * @param : The filename of the map file.
 	 */
 	public Map(String fileName) {
-		readMap(fileName);
+		if(!fileName.isEmpty() && fileName.endsWith(".txt")){
+			readMap(fileName);
+		}
+		else{
+			System.out.printf("\ninputed file name of \"%s\", does not exist. \nPlease ensure the name of a text file is inputted.", fileName);
+		}
+		
 	}
 
     /**
@@ -78,16 +90,66 @@ public class Map {
     }
 
     /**
-     * TODO: Reads the map from file.
-     * Set the gold required to exit the current map
-	 * Set map name
-	 * Set map
-	 * Check if map is valid - format of file is correct, 
-	 * 						 - an array length of > 3, 
-	 * 						 - has atleast 1 gold and exit, 
-	 * 						 - player can find a way to get all gold needed and exit from minimum 1 path
+     * TODO: [x]Reads the map from file.
+	 * Check if map is valid [] format of file is correct - name, gold, map, 
+	 * 						 [] an array length of > 3, 
+	 * 						 [] has atleast 1 gold and exit, 
+	 * 						 [] player can find a way to get all gold needed and exit from minimum 1 path
      * @param : Name of the map's file.
      */
     protected void readMap(String fileName) {
+		// int goldCount = 0;
+		int mapLength = 0;
+		int mapWidth = 0;
+
+		ArrayList<String> tempMapData = new ArrayList<String>();
+
+		try {
+			BufferedReader bf = new BufferedReader(new FileReader(fileName));
+			String line = bf.readLine();
+
+			while (line != null) {
+				tempMapData.add(line);
+				// System.out.println(line);
+				// read next line
+				line = bf.readLine();
+			}
+
+			bf.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		//TODO: set map name
+		mapName = tempMapData.get(0);
+		//TODO: set map gold - look up regex's
+		goldRequired = Integer.parseInt(tempMapData.get(1).replaceAll("\\D+", ""));
+		//TODO: set map - for loop?
+
+		//map length - start from 2 to size -1
+		//map width - start from 0 to length -1
+
+		mapLength = tempMapData.size();
+ 		mapWidth = tempMapData.get(2).length();
+		
+		map = new char[mapLength-2][mapWidth];
+
+		/*
+		 * make a set of for loops that:
+		 * a) Loop through the size of the mp array
+		 * b) Loop through each m=line of the temp map
+		 * c) Loop through each char in string
+		*/
+
+		for(int y = 2; y < mapLength; y++){
+			for(int x = 0; x < mapWidth; x++){
+				for(int index = 0; index < tempMapData.get(y).length(); index++){
+					map[y-2][x] = tempMapData.get(y).charAt(x);
+				}
+			}
+		}
+		System.out.printf("map name: %s, map gold required to exit: %d, map:",mapName, goldRequired);
+		System.out.printf("\n %s \n\n",Arrays.deepToString(map).replace("],", "],\n"));
     }
 }

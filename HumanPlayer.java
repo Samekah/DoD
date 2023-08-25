@@ -133,9 +133,9 @@ public class HumanPlayer {
                 output = gameLogic.look();
                 break;
 			case "LOAD": 
-				
-				// Map map = new Map("example_map.txt");
-				break;
+                //for testing
+                gameLogic.map.readMap("example_map.txt");
+                break;
 				
 			case "QUIT":                 
                 gameLogic.quitGame();

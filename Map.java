@@ -17,6 +17,8 @@ public class Map {
 	
 	/* Gold required for the human player to win */
 	private int goldRequired;
+	private int goldCount = 0;
+	private int exitCount = 0;
 	
 	/**
 	 * Default constructor, creates the default map "Very small Labyrinth of doom".
@@ -98,7 +100,6 @@ public class Map {
      * @param : Name of the map's file.
      */
     protected void readMap(String fileName) {
-		// int goldCount = 0;
 		int mapLength = 0;
 		int mapWidth = 0;
 
@@ -122,16 +123,6 @@ public class Map {
 			e.printStackTrace();
 		}
 
-		//TODO: set map name
-		mapName = tempMapData.get(0);
-		//TODO: set map gold - look up regex's - split into array and pass first item that matches isdigit
-		goldLine = tempMapData.get(1).split("[\\p{Punct}\\s]+");
-	 	goldRequired = ValidateGold(goldLine);
-		if( goldRequired < 0){
-			System.err.println("Gold value '" + tempMapData.get(1) + "' in line 2 of file '" + fileName + "' is formatted incorrectly");
-			System.exit(1);
-		}
-				
 		//map length - start from 2 to size -1
 		//map width - start from 0 to length -1
 		mapLength = tempMapData.size();
@@ -148,23 +139,48 @@ public class Map {
 
 		for(int y = 2; y < mapLength; y++){
 			for(int x = 0; x < mapWidth; x++){
-				for(int index = 0; index < tempMapData.get(y).length(); index++){
-					map[y-2][x] = tempMapData.get(y).charAt(x);
-				}
+				switch (tempMapData.get(y).charAt(x)) {
+					case 'G':
+						goldCount++;
+						break;
+				
+					case 'E':
+						exitCount++;
+						break;
+				}				
+				map[y-2][x] = tempMapData.get(y).charAt(x);				
 			}
 		}
-		System.out.printf("map name: %s, map gold required to exit: %d, map:",mapName, goldRequired);
+
+		mapName = tempMapData.get(0);
+		
+		goldLine = tempMapData.get(1).split("[\\p{Punct}\\s]+");
+	 	goldRequired = ValidateGold(goldLine);
+		if( goldRequired == -1){
+			System.err.println("Gold value '" + tempMapData.get(1) + "' in line 2 of file '" + fileName + "' is formatted incorrectly");
+			System.exit(1);
+		}
+		else if(goldRequired == -2){
+			System.err.println("Gold value '" + tempMapData.get(1) + "' in line 2 of file '" + fileName + "' is more than the gold available on the map");
+			System.exit(1);
+		}
+				
+	
+		System.out.printf("\ntotal gold count : %d, total exit count id: %d",goldCount, exitCount);
+		System.out.printf("\nmap name: %s, map gold required to exit: %d, map:",mapName, goldRequired);
 		System.out.printf("\n %s \n\n",Arrays.deepToString(map).replace("],", "],\n"));
     }
 
 	protected int ValidateGold(String[] line){
+		int t=0;
+		
 		for (String item : line) {
 			try{
-				//check to see if the map gold required is more than 0
-				//TODO: check to see if map gold is less than or equal to mapGold
-				if(Integer.parseInt(item) > 0){
-					return Integer.parseInt(item);
-				};				
+				t = Integer.parseInt(item);
+				if( t > goldCount){
+					return -2;
+				};	
+				return t;			
 			}
 			catch (NumberFormatException e) {}
 		}

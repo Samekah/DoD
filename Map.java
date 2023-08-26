@@ -103,6 +103,7 @@ public class Map {
 		int mapWidth = 0;
 
 		ArrayList<String> tempMapData = new ArrayList<String>();
+		String[] goldLine;
 
 		try {
 			BufferedReader bf = new BufferedReader(new FileReader(fileName));
@@ -123,22 +124,25 @@ public class Map {
 
 		//TODO: set map name
 		mapName = tempMapData.get(0);
-		//TODO: set map gold - look up regex's
-		goldRequired = Integer.parseInt(tempMapData.get(1).replaceAll("\\D+", ""));
-		//TODO: set map - for loop?
-
+		//TODO: set map gold - look up regex's - split into array and pass first item that matches isdigit
+		goldLine = tempMapData.get(1).split("[\\p{Punct}\\s]+");
+	 	goldRequired = ValidateGold(goldLine);
+		if( goldRequired < 0){
+			System.err.println("Gold value '" + tempMapData.get(1) + "' in line 2 of file '" + fileName + "' is formatted incorrectly");
+			System.exit(1);
+		}
+				
 		//map length - start from 2 to size -1
 		//map width - start from 0 to length -1
-
 		mapLength = tempMapData.size();
  		mapWidth = tempMapData.get(2).length();
 		
 		map = new char[mapLength-2][mapWidth];
 
 		/*
-		 * make a set of for loops that:
-		 * a) Loop through the size of the mp array
-		 * b) Loop through each m=line of the temp map
+		 * A set of for loops that:
+		 * a) Loop through the size of the map array
+		 * b) Loop through each line of the temp map
 		 * c) Loop through each char in string
 		*/
 
@@ -152,4 +156,19 @@ public class Map {
 		System.out.printf("map name: %s, map gold required to exit: %d, map:",mapName, goldRequired);
 		System.out.printf("\n %s \n\n",Arrays.deepToString(map).replace("],", "],\n"));
     }
+
+	protected int ValidateGold(String[] line){
+		for (String item : line) {
+			try{
+				//check to see if the map gold required is more than 0
+				//TODO: check to see if map gold is less than or equal to mapGold
+				if(Integer.parseInt(item) > 0){
+					return Integer.parseInt(item);
+				};				
+			}
+			catch (NumberFormatException e) {}
+		}
+		return -1;
+	}
+
 }
